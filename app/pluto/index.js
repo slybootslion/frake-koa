@@ -5,7 +5,10 @@ import error from './error'
 export { config } from './config'
 export * from './error/http-exception'
 export * from './extend'
+export * from './jwt'
 export * from './validator/lin-validator'
+export * from './db/Redis'
+// export * from './db/MySQL'
 export * from './permission'
 /**
  * 初始化并获取配置

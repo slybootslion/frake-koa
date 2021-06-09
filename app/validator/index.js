@@ -17,3 +17,4 @@ export {
 export { UploadValidator } from './business/common/upload'
 
 export * from './business/ppr/theme-link-sentence'
+export * from './business/common/no-params'

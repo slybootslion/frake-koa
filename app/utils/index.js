@@ -21,3 +21,7 @@ export function writeFile (filePath, data) {
   }
   return false
 }
+
+export function getParamsByBody () {
+
+}

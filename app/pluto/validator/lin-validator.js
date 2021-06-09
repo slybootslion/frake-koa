@@ -23,6 +23,7 @@ class LinValidator {
      */
     this.errors = []
   }
+
   /**
    * 校验
    * @param ctx koa context
@@ -53,13 +54,14 @@ class LinValidator {
       return this
     }
   }
+
   replace (keys) {
     // key 是原来的名字
     if (!this.alias) {
       return keys
     }
-    let arr = []
-    for (let key of keys) {
+    const arr = []
+    for (const key of keys) {
       if (this.alias[key]) {
         this[this.alias[key]] = this[key]
         lodash.unset(this, key)
@@ -70,6 +72,7 @@ class LinValidator {
     }
     return arr
   }
+
   isOptional (val) {
     // undefined , null , ""  , "    ", 皆通过
     if (val === void 0) {
@@ -83,6 +86,7 @@ class LinValidator {
     }
     return false
   }
+
   async checkRules () {
     // 筛选出是Rule或Rules的key
     // 添加规则校验 validateKey
@@ -142,7 +146,7 @@ class LinValidator {
         if (!optional) {
           this.errors.push({ key, message: message || `${key}不可为空` })
         } else {
-          this.parsed['default'][key] = defaultVal
+          this.parsed.default[key] = defaultVal
         }
       } else {
         if (lodash.isArray(value)) {
@@ -185,7 +189,7 @@ class LinValidator {
         }
       }
     }
-    let validateFuncKeys = Utils.getAllMethodNames(this, {
+    const validateFuncKeys = Utils.getAllMethodNames(this, {
       filter: key => /validate([A-Z])\w+/g.test(key) && typeof this[key] === 'function',
     })
     for (const validateFuncKey of validateFuncKeys) {
@@ -206,7 +210,7 @@ class LinValidator {
           }
           this.errors.push({ key, message: validRes[1] })
         } else if (!validRes) {
-          let key = this.getValidateFuncKey(validateFuncKey)
+          const key = this.getValidateFuncKey(validateFuncKey)
           // 如果自定函数没有给出错误信息，那么错误信息为默认
           this.errors.push({ key, message: '参数错误' })
         }
@@ -221,6 +225,7 @@ class LinValidator {
     }
     return this.errors.length === 0
   }
+
   /**
    * 获得规则函数的key
    * @param validateFuncKey 规则函数的名称
@@ -228,6 +233,7 @@ class LinValidator {
   getValidateFuncKey (validateFuncKey) {
     return validateFuncKey.replace('validate', '')
   }
+
   /**
    *  取参数里的值；如果参数不能被解析，则返回没有被解析的值
    * @param path 参数所在的路径，如 a.b
@@ -246,12 +252,13 @@ class LinValidator {
       } else {
         const index = path.lastIndexOf('.')
         const suffix = path.substring(index + 1, path.length)
-        return lodash.get(this.parsed['default'], suffix, defaultVal && defaultVal)
+        return lodash.get(this.parsed.default, suffix, defaultVal && defaultVal)
       }
     } else {
       return lodash.get(this.data, path, defaultVal && defaultVal)
     }
   }
+
   findInData (key) {
     const keys = Object.keys(this.data)
     for (const k of keys) {
@@ -280,6 +287,7 @@ class Rule {
       this.defaultValue = options && options[0]
     }
   }
+
   validate (value) {
     this.rawValue = value
     if (typeof this.validateFunction === 'function') {
