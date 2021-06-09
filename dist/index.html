@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模拟数据服务器 by SlybootsLion</title>
+</head>
+<body>
+<!--<h1>模拟数据服务器 by SlybootsLion</h1>-->
+<div>
+  <input type="text" class="username" value="slybootslion">
+</div>
+<div>
+  <input type="password" class="password" value="abc123">
+</div>
+<div>
+  <button class="submit">get code</button>
+  <button class="checkCode">check code</button>
+</div>
+<p class="code"></p>
+<script>
+const btnDom = document.querySelector('.submit')
+const btnCheckDom = document.querySelector('.checkCode')
+btnDom.addEventListener('click', function () {
+  const username = document.querySelector('.username').value
+  const password = document.querySelector('.password').value
+  getCode(username, password)
+})
+
+btnCheckDom.addEventListener('click', function () {
+  const code = document.querySelector('.code').innerHTML.trim()
+  checkCode(code)
+})
+
+async function checkCode (code) {
+  const res = await (await fetch('http://localhost:39200/test/check-code', {
+    body: JSON.stringify({}),
+    headers: {
+      'content-type': 'application/json',
+      'LuCode': code,
+    },
+    method: 'POST',
+  })).json()
+  let t = res.message
+  console.log(t)
+}
+
+async function getCode (username, password) {
+  const pDom = document.querySelector('.code')
+  const data = { username, password }
+  const res = await (await fetch('http://localhost:39200/sys/login', {
+    body: JSON.stringify(data), // must match 'Content-Type' header
+    headers: {
+      'content-type': 'application/json'
+    },
+    method: 'POST',
+  })).json()
+  let t = res.message
+  if (res.code === 0) t = res.data.code
+  pDom.innerHTML = t
+}
+
+
+</script>
+</body>
+</html>
