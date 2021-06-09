@@ -5,6 +5,7 @@ export function createUuid () {
   return v4()
 }
 
+// body query path
 export function getParamsByV (v, type = 'body') {
   return v && v.get(type)
 }
