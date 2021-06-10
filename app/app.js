@@ -2,7 +2,7 @@ import Koa from 'koa'
 import cors from '@koa/cors'
 import koaBody from 'koa-body'
 import koaStatic from 'koa-static'
-import { config, error, json, jwt, Loader, success } from './pluto'
+import { config, error, json, Loader, success } from './pluto'
 
 // 跨域
 function applyCors (app) {
@@ -27,12 +27,6 @@ function applyLoader (app) {
   loader.initLoader()
 }
 
-// jwt
-function applyJwt (app) {
-  const secret = config.getItem('secret')
-  jwt.initApp(app, secret)
-}
-
 // 静态服务器
 function staticServe (app) {
   app.use(koaStatic(config.getItem('staticPath')))
@@ -45,7 +39,6 @@ const createApp = () => {
   applyCors(app)
   applyDefaultExtends(app)
   applyLoader(app)
-  applyJwt(app)
   staticServe(app)
   return app
 }
