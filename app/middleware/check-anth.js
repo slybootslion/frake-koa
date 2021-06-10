@@ -1,4 +1,5 @@
 import { NotFound } from '../pluto'
+import jwtDecode from 'jwt-decode'
 
 export async function loginRequired (ctx, next) {
   if (ctx.request.method !== 'OPTIONS') {
@@ -25,7 +26,7 @@ export async function checkUserInfo (ctx, next) {
 
 async function mountUser (ctx) {
   const token = getTokenHeader(ctx)
-  const userInfo = await ctx.jwt.verifyToken(token)
+  const userInfo = jwtDecode(token)
   if (!userInfo) throw new NotFound({ code: 30002 })
   ctx.userInfo = userInfo
 }
