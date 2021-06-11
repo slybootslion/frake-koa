@@ -22,7 +22,7 @@ export function randomInt (maxNum = 100, minNum = 1) {
 }
 
 export function readFile (filePath) {
-  const data = fs.readFileSync(filePath, 'utf-8')
+  const data = (fs.readFileSync(filePath, 'utf-8')).trim()
   if (!data) return false
   return JSON.parse(data)
 }

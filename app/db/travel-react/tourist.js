@@ -322,3 +322,47 @@ export const d2 = [
     createDate: '2020-02-05',
   },
 ]
+
+// 旅游路线
+export const touristRoutes = [
+  {
+    id: '1',
+    title: '厦门4日自由行(4钻)',
+    description: '错峰好价【2晚4钻连住+1晚推荐升级5钻 | 19元优惠换购专车接机】探秘世遗·鼓浪屿 | 潮聚地 沙坡尾&曾厝垵&园林植物园【更可加选 旅拍套餐 & 漳州土楼一日游等当地玩乐】海上花园 海岛之旅',
+    price: 1734,
+    originalPrice: 1734,
+    discountPresent: 1,
+    rating: null,
+    touristRoutePictures: [{ url: 'https://dimg03.c-ctrip.com/images/100q10000000pogbeA392_C_280_158_Q100.jpg' }],
+  },
+  {
+    id: '2',
+    title: '北京5日自由行(4钻)',
+    description: '【限时展览】故宫博物院·”陶瓷馆“，探寻600年紫禁城记忆『舒适酒店·4晚连住· 双飞往返』 打卡景山公园，俯瞰醉美故宫日落全景',
+    price: 162.5,
+    originalPrice: 1625,
+    discountPresent: 0.1,
+    rating: 3.2,
+    touristRoutePictures: [{ url: 'https://dimg03.c-ctrip.com/images/0225i120008egrqe7B472_C_280_158_Q100.jpg' }],
+  },
+  {
+    id: '3',
+    title: '陕西西安+兵马俑+华清池+黄帝陵+壶口瀑布+延安3日跟团游',
+    description: '『经典升级·惠游长安立减50/人』【2晚严选酒店+含2早4正餐】『B线升级4钻酒店·住知青文苑·赠知青旧居+延安段升级陆地头等舱车』C线65岁专享',
+    price: 450,
+    originalPrice: 450,
+    discountPresent: 1,
+    rating: 4.6,
+    touristRoutePictures: [{ url: 'https://dimg04.c-ctrip.com/images/0305w120008b70ro2F6C1_C_210_118_Q100.png' }],
+  },
+  {
+    id: '4',
+    title: '敦煌+嘉峪关+张掖+兰州5日4晚私家团(5钻)',
+    description: '直飞敦煌【纯玩 专车出行+门票全含+动车接驳+5钻酒店】“西出阳关无故人”『千年莫高窟+鸣沙山月牙泉+七彩丹霞+登嘉峪关』 A线往返机票+B线单去程【3人起至高享-4000元/单】',
+    price: 4273,
+    originalPrice: 4273,
+    discountPresent: 1,
+    rating: 4,
+    touristRoutePictures: [{ url: 'https://dimg04.c-ctrip.com/images/300o0s000000hkp6c1B81_C_200_150.jpg' }],
+  },
+]
