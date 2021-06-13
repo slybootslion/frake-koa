@@ -1,48 +1,33 @@
-import Koa from 'koa'
-import cors from '@koa/cors'
-import koaBody from 'koa-body'
-import koaStatic from 'koa-static'
-import { config, error, json, Loader, success } from './pluto'
+import jsonServer from 'json-server'
+import { join } from 'path'
 
-// 跨域
-function applyCors (app) {
-  app.use(cors())
+const initMiddlewares = app => {
+  const middlewares = jsonServer.defaults()
+  app.use(middlewares)
 }
 
-// body
-function applyBody (app) {
-  // 参数解析 文件上传
-  app.use(koaBody())
+const initBodyParser = app => {
+  app.use(jsonServer.bodyParser)
 }
 
-// 返回json扩展
-function applyDefaultExtends (app) {
-  json(app)
-  success(app)
-}
-
-// loader 加载路由
-function applyLoader (app) {
-  const loader = new Loader(app)
-  loader.initLoader()
-}
-
-// 静态服务器
-function staticServe (app) {
-  app.use(koaStatic(config.getItem('staticPath')))
+const initRouter = app => {
+  const router = jsonServer.router(join(__dirname, './db/index.json'))
+  router.render = (req, res) => {
+    res.jsonp({
+      message: 'ok',
+      code: 0,
+      data: res.locals.data,
+    })
+  }
+  app.use(router)
 }
 
 const createApp = () => {
-  const app = new Koa()
-  app.use(error)
-  applyBody(app)
-  applyCors(app)
-  applyDefaultExtends(app)
-  applyLoader(app)
-  staticServe(app)
+  const app = jsonServer.create()
+  initMiddlewares(app)
+  initBodyParser(app)
+  initRouter(app)
   return app
 }
 
-module.exports = {
-  createApp,
-}
+export default createApp
