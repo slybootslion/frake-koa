@@ -2,23 +2,24 @@ import * as Cheerio from 'cheerio'
 import { createFile, delayTimer, http } from "./tools.js";
 
 const urls = [
-  // '15835.html',
-  '15734.html',
-  '16842.html',
-  '15709.html',
-  '12192.html',
-  '18706.html',
-  '16228.html',
-  '17183.html',
-  '15852.html',
-  '8079.html',
-  '16787.html',
-  '16841.html',
-  '11816.html',
-  '14059.html',
+  '16664.html',
+  '16486.html',
+  '15124.html',
+  '11678.html',
+  '16435.html',
+  '16656.html',
+  '16901.html',
+  '15779.html',
+  '16839.html',
+  '17706.html',
+  '17101.html',
+  '8368.html',
+  '12189.html',
+  '15906.html',
+  '8074.html',
 ]
 
-// 点赞排序 小圆同学
+// 点赞排序 王后的巴掌
 
 const runQuJi = async () => {
   const baseUrl = 'https://ifun.cool/'
