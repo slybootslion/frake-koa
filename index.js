@@ -25,7 +25,7 @@ const runQuJi = async () => {
 
 const runYanShen = async () => {
   const urls = [
-    '',
+    '2023/03/22/%E4%BD%8F%E6%88%91%E9%95%9C%E5%AD%90%E9%87%8C%E7%9A%84%E9%AC%BC%E5%B0%8F%E5%A7%90',
   ]
 
   const baseUrl = 'https://onehu.xyz/'
