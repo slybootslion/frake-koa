@@ -1,5 +1,5 @@
 import * as Cheerio from 'cheerio'
-import { createFile, delayTimer, http } from "./tools.js";
+import { createFile, delayTimer, http, httpCookie } from "./tools.js";
 
 const runQuJi = async () => {
   const urls = [
@@ -50,4 +50,27 @@ const runYanShen = async () => {
 // runQuJi()
 
 // 盐神
-runYanShen()
+// runYanShen()
+
+// 盐选
+const runYanxuan = async () => {
+  const urls = [
+    '1465372641737154560/section/1481962063962062848',
+  ]
+
+  const baseUrl = 'https://www.zhihu.com/market/paid_column/'
+  for (const url of urls) {
+    await delayTimer(1200)
+    const res = await httpCookie(baseUrl + url)
+    const $ = Cheerio.load(res.res.text);
+    const title = $('.ManuscriptTitle-root-gcmVk').text()
+    const contentEls = $('#manuscript p')
+    let content = ''
+    for (let i = 0; i < contentEls.length; i++) {
+      const txt = $(contentEls[i]).text()
+      !!txt.trim() && (content += txt + '\n')
+    }
+    createFile({ title, content })
+  }
+}
+runYanxuan()
