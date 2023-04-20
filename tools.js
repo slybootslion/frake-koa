@@ -17,7 +17,10 @@ export const createFile = data => {
   const title = data.title
   const content = data.content
 
-  fs.writeFile(`${title}.txt`, content, { flag: 'w' }, () => console.log(title))
+  fs.writeFile(`${title}.txt`, content, { flag: 'w' }, (e) =>{
+    console.log(e)
+    console.log(title)
+  })
 }
 
 export const delayTimer = (sec = 1000) => new Promise(resolve => setTimeout(() => resolve(), sec))
