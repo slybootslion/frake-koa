@@ -18,7 +18,6 @@ export const createFile = data => {
   const content = data.content
 
   fs.writeFile(`${title}.txt`, content, { flag: 'w' }, (e) =>{
-    console.log(e)
     console.log(title)
   })
 }
