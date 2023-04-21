@@ -57,8 +57,22 @@ const runYanShen = async () => {
 // https://www.zhihu.com/xen/market/remix/paid_column/1467897508667637760
 const runYanxuan = async () => {
   const urls = [
-    'https://www.zhihu.com/market/paid_column/1405842162601275392/section/1413824698866720768',
-    'https://www.zhihu.com/market/paid_column/1405842162601275392/section/1413823255614070784',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1449773342564212736',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1449791323411308544',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1451299938823536640',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1451315324083290112',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1451520267704696832',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1451563742501146625',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1451605603873878016',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1451612761104588800',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1453781306056716288',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1453782739183316992',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1453805749977317376',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1453808503891046401',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1453809890930659328',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1453813744556564480',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1453822320233676800',
+    'https://www.zhihu.com/market/paid_column/1439565482748272640/section/1453826344891527168',
   ]
   const cookie = '_xsrf=2jPE1V2R7OI7qyGeAO0yDyrov9371ngR; _zap=8655bd6e-e380-48aa-94fd-cb2203310782; d_c0=AEAXnFIEhhaPTquJ5dvpx60Ptmzw9O1H3pU=|1679730842; Hm_lvt_98beee57fd2ef70ccdd5ca52b9740c49=1679574727,1679651008,1679726099,1679730749; Hm_lpvt_98beee57fd2ef70ccdd5ca52b9740c49=1679730844; KLBRSID=031b5396d5ab406499e2ac6fe1bb1a43|1679730844|1679730830; z_c0=2|1:0|10:1679730845|4:z_c0|80:MS4xcVRTM0F3QUFBQUFtQUFBQVlBSlZUWnIyQzJVUnBpWHNvNmE0VHBCOUcyMTFCRjEwLWFCQmpRPT0=|79f19aaac7da30d7bbb684f3e0d31e66f4fa023dee5cb0cf7ca42f95c9217bbb'
   for (let i = 0; i < urls.length; i++) {
